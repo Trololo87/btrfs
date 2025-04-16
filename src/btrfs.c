@@ -1057,7 +1057,7 @@ static NTSTATUS __stdcall drv_query_volume_information(_In_ PDEVICE_OBJECT Devic
                 data->FileSystemAttributes |= FILE_READ_ONLY_VOLUME;
 
             // should also be FILE_FILE_COMPRESSION when supported
-            data->MaximumComponentNameLength = 255; // FIXME - check
+            data->MaximumComponentNameLength = 510; // FIXME - check
             data->FileSystemNameLength = orig_fs_name_len;
             RtlCopyMemory(data->FileSystemName, fs_name, fs_name_len);
 
@@ -5799,7 +5799,7 @@ NTSTATUS check_file_name_valid(_In_ PUNICODE_STRING us, _In_ bool posix, _In_ bo
     if (us->Length < sizeof(WCHAR))
         return STATUS_OBJECT_NAME_INVALID;
 
-    if (us->Length > 255 * sizeof(WCHAR))
+    if (us->Length > 510 * sizeof(WCHAR))
         return STATUS_OBJECT_NAME_INVALID;
 
     for (i = 0; i < us->Length / sizeof(WCHAR); i++) {
@@ -5831,9 +5831,9 @@ NTSTATUS check_file_name_valid(_In_ PUNICODE_STRING us, _In_ bool posix, _In_ bo
         if (!NT_SUCCESS(Status))
             return Status;
 
-        if (utf8len > 255)
+        if (utf8len > 510)
             return STATUS_OBJECT_NAME_INVALID;
-        else if (stream && utf8len > 250) // minus five bytes for "user."
+        else if (stream && utf8len > 500) // minus five bytes for "user."
             return STATUS_OBJECT_NAME_INVALID;
     }
 
