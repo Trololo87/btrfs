@@ -5941,7 +5941,6 @@ static void __stdcall serial_thread(void* context) {
         KeSetTimer(&timer, due_time, NULL);
     }
 
-    KeCancelTimer(&timer);
 
     PsTerminateSystemThread(STATUS_SUCCESS);
 
