@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 
 project(btrfs VERSION 1.9.0)
 
-option(WITH_TEST "Compile test program" ON)
+option(WITH_TEST "Compile test program" OFF)
 
 if(MSVC) # cmake bug 15170
     if(MSVC_C_ARCHITECTURE_ID STREQUAL "X86")
