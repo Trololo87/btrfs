@@ -7942,7 +7942,6 @@ void __stdcall flush_thread(void* context) {
     }
 
     ObDereferenceObject(devobj);
-    KeCancelTimer(&Vcb->flush_thread_timer);
 
     KeSetEvent(&Vcb->flush_thread_finished, 0, false);
 
