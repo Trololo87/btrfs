@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 
 project(btrfs VERSION 1.9.0)
 
-include_directories("/usr/x86_64-w64-mingw32/include/ddk/")
+include_directories("/usr/x86_64-w64-mingw32/include/ddk")
 
 option(WITH_TEST "Compile test program" OFF)
 
