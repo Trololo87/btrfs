@@ -807,8 +807,7 @@ NTSTATUS zstd_compress(uint8_t* inbuf, uint32_t inlen, uint8_t* outbuf, uint32_t
     if (params.cParams.windowLog > ZSTD_BTRFS_MAX_WINDOWLOG)
         params.cParams.windowLog = ZSTD_BTRFS_MAX_WINDOWLOG;
 
-    init_res = ZSTD_initCStream_advanced(stream, NULL, 0, params, inlen);
-    //init_res = ZSTD_CCtx_setParams(stream, params);
+    init_res = ZSTD_CCtx_setParams(stream, params);
     if (ZSTD_isError(init_res)) {
         ERR("ZSTD_initCStream_advanced failed: %s\n", ZSTD_getErrorName(init_res));
         ZSTD_freeCStream(stream);
