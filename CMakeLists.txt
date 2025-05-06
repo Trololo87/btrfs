@@ -83,7 +83,8 @@ endif()
 
 # btrfs.sys
 
-set(SRC_FILES src/balance.c
+set(SRC_FILES src/zstd/lib/decompress/huf_decompress_amd64.S
+    src/balance.c
     src/blake2b-ref.c
     src/boot.c
     src/btrfs.c
